@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediX — Plateforme Médicale</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-logo">⚕</div>
+    <div>
+      <div class="tb-brand">Medi<span>X</span></div>
+      <div class="tb-tagline">Plateforme des Étudiants en Médecine</div>
+    </div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-pill tp-green">🔥 7 Jours de Suite</div>
+    <div class="tb-pill tp-blue" id="tbDate"></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <div class="sh-label">Menu Principal</div>
+      <div class="sh-title">Bibliothèque Médicale</div>
+    </div>
+    <nav class="nav-scroll">
+
+      <div class="nav-group">
+        <div class="ng-label">Accueil</div>
+        <div class="nav-item active" onclick="goto('home',this)">
+          <span class="nav-icon ni-home"></span><span class="nav-label">Tableau de bord</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="ng-label">Années d'études</div>
+        <div class="nav-item" onclick="goto('years',this)">
+          <span class="nav-icon ni-years"></span><span class="nav-label">Toutes les années</span>
+        </div>
+        <div class="year-btn" onclick="gotoYear(1,this)"><div class="yb-dot" style="background:#2563EB"></div><span class="yb-label">1ère Année</span><span class="yb-num">1A</span></div>
+        <div class="year-btn" onclick="gotoYear(2,this)"><div class="yb-dot" style="background:#7C3AED"></div><span class="yb-label">2ème Année</span><span class="yb-num">2A</span></div>
+        <div class="year-btn" onclick="gotoYear(3,this)"><div class="yb-dot" style="background:#059669"></div><span class="yb-label">3ème Année</span><span class="yb-num">3A</span></div>
+        <div class="year-btn" onclick="gotoYear(4,this)"><div class="yb-dot" style="background:#D97706"></div><span class="yb-label">4ème Année</span><span class="yb-num">4A</span></div>
+        <div class="year-btn" onclick="gotoYear(5,this)"><div class="yb-dot" style="background:#DC2626"></div><span class="yb-label">5ème Année</span><span class="yb-num">5A</span></div>
+        <div class="year-btn" onclick="gotoYear(6,this)"><div class="yb-dot" style="background:#0891B2"></div><span class="yb-label">6ème Année</span><span class="yb-num">6A</span></div>
+      </div>
+
+      <div class="nav-group">
+        <div class="ng-label">Outils</div>
+        <div class="nav-item" onclick="goto('drive',this)">
+          <span class="nav-icon ni-drive"></span><span class="nav-label">Drive</span><span class="nav-badge">6</span>
+        </div>
+        <div class="nav-item" onclick="goto('qcm',this)">
+          <span class="nav-icon ni-qcm"></span><span class="nav-label">QCM</span><span class="nav-badge">1200+</span>
+        </div>
+        <div class="nav-item" onclick="goto('flashcards',this)">
+          <span class="nav-icon ni-flash"></span><span class="nav-label">Flashcards</span><span class="nav-badge">500+</span>
+        </div>
+        <div class="nav-item" onclick="goto('exams',this)">
+          <span class="nav-icon ni-exam"></span><span class="nav-label">Examens Passés</span><span class="nav-badge">80+</span>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="ng-label">Communauté</div>
+        <div class="nav-item" onclick="goto('feedback',this)">
+          <span class="nav-icon ni-fb"></span><span class="nav-label">Laisser un avis</span>
+        </div>
+      </div>
+
+    </nav>
+    <div class="sidebar-footer">
+      <div class="streak-card">
+        <div class="sc-icon">🔥</div>
+        <div>
+          <div class="sc-val">7</div>
+          <div class="sc-label">Jours consécutifs</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- HOME -->
+    <div class="page active" id="page-home">
+      <div class="home-top">
+        <div class="home-hero">
+          <div class="home-hero-text">
+            <div class="hh-tag">⚕ Plateforme MediX · Médecine Algérienne</div>
+            <div class="hh-title">Bienvenue sur<br><em>votre espace médical</em></div>
+            <div class="hh-sub">Tous vos cours, QCM, flashcards et examens passés réunis en un seul endroit. Organisé par année, accessible partout.</div>
+            <div class="hh-stats">
+              <div class="hh-stat"><div class="hs-num">6</div><div class="hs-lbl">Années</div></div>
+              <div class="hh-stat"><div class="hs-num">1200+</div><div class="hs-lbl">QCM</div></div>
+              <div class="hh-stat"><div class="hs-num">500+</div><div class="hs-lbl">Flashcards</div></div>
+              <div class="hh-stat"><div class="hs-num">80+</div><div class="hs-lbl">Examens</div></div>
+            </div>
+          </div>
+          <!-- Single image slot inside hero -->
+          <div class="hero-img-slot" id="heroSlot" onclick="heroChangeImg()">
+            <div class="his-placeholder" id="heroPlaceholder">
+              <div class="his-plus">+</div>
+              <div class="his-label">Ajouter une photo</div>
+            </div>
+            <div class="his-overlay" id="heroOverlay">
+              <button class="his-btn">Changer</button>
+            </div>
+            <div class="his-date" id="heroDate"></div>
+          </div>
+          <input type="file" id="heroImgInput" accept="image/*" style="display:none" onchange="handleHeroImg(event)">
+        </div>
+      </div>
+      <div class="home-grid">
+        <div class="home-card" onclick="goto('drive',null)">
+          <div class="hc-icon" style="background:#FFF7ED">📁</div>
+          <div class="hc-title">Drive par Année</div>
+          <div class="hc-desc">Cours, résumés et documents PDF organisés par année et par matière.</div>
+          <div class="hc-foot"><span class="hc-count">6 dossiers</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('qcm',null)">
+          <div class="hc-icon" style="background:var(--primary-bg)">📝</div>
+          <div class="hc-title">QCM Interactifs</div>
+          <div class="hc-desc">Plus de 1200 questions à choix multiples classées par année et matière.</div>
+          <div class="hc-foot"><span class="hc-count">1200+ questions</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('flashcards',null)">
+          <div class="hc-icon" style="background:var(--violet-bg)">🃏</div>
+          <div class="hc-title">Flashcards</div>
+          <div class="hc-desc">Mémorisez les notions clés avec nos cartes de révision interactives.</div>
+          <div class="hc-foot"><span class="hc-count">500+ cartes</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('exams',null)">
+          <div class="hc-icon" style="background:var(--red-bg)">📄</div>
+          <div class="hc-title">Examens Passés</div>
+          <div class="hc-desc">Archives des examens des années précédentes avec corrections détaillées.</div>
+          <div class="hc-foot"><span class="hc-count">80+ examens</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('years',null)">
+          <div class="hc-icon" style="background:var(--accent-bg)">🎓</div>
+          <div class="hc-title">Années d'études</div>
+          <div class="hc-desc">Accédez à tout le contenu de votre année en un seul clic.</div>
+          <div class="hc-foot"><span class="hc-count">1A → 6A</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('feedback',null)">
+          <div class="hc-icon" style="background:#F0F9FF">💬</div>
+          <div class="hc-title">Laisser un Avis</div>
+          <div class="hc-desc">Votre retour nous aide à améliorer la plateforme pour tous les étudiants.</div>
+          <div class="hc-foot"><span class="hc-count">Votre voix compte</span><span class="hc-arrow">→</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- YEARS -->
+    <div class="page" id="page-years">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Cursus Médical</div>
+            <div class="ph-title">Les 6 <em>Années</em> de Médecine</div>
+            <div class="ph-sub">Choisissez votre année pour accéder aux cours, QCM, flashcards et examens correspondants.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="years-grid">
+        <div class="year-card y1">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">1ère Année</div>
+              <div class="yc-title">Sciences Fondamentales I</div>
+              <div class="yc-sub">Biologie cellulaire, Chimie, Physique médicale, Anatomie générale</div>
+            </div>
+            <div class="yc-badge">1A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(1)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(1)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+        <div class="year-card y2">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">2ème Année</div>
+              <div class="yc-title">Sciences Fondamentales II</div>
+              <div class="yc-sub">Biochimie, Histologie, Physiologie, Microbiologie</div>
+            </div>
+            <div class="yc-badge">2A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(2)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(2)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+        <div class="year-card y3">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">3ème Année</div>
+              <div class="yc-title">Pathologie & Sémiologie</div>
+              <div class="yc-sub">Anatomie Pathologique, Pharmacologie, Sémiologie médicale</div>
+            </div>
+            <div class="yc-badge">3A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(3)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(3)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+        <div class="year-card y4">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">4ème Année</div>
+              <div class="yc-title">Clinique I</div>
+              <div class="yc-sub">Médecine interne, Chirurgie générale, Pédiatrie</div>
+            </div>
+            <div class="yc-badge">4A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(4)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(4)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+        <div class="year-card y5">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">5ème Année</div>
+              <div class="yc-title">Clinique II</div>
+              <div class="yc-sub">Spécialités médicales, Gynécologie, Urgences</div>
+            </div>
+            <div class="yc-badge">5A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(5)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(5)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+        <div class="year-card y6">
+          <div class="yc-header">
+            <div>
+              <div class="yc-year">6ème Année</div>
+              <div class="yc-title">Externat & Résidanat</div>
+              <div class="yc-sub">Stages cliniques, Préparation au résidanat</div>
+            </div>
+            <div class="yc-badge">6A</div>
+          </div>
+          <div class="yc-body">
+            <div class="yc-chip chip-drive" onclick="goto('drive',null)">📁 Drive</div>
+            <div class="yc-chip chip-qcm" onclick="setQcmYear(6)">📝 QCM</div>
+            <div class="yc-chip chip-flash" onclick="setFcYear(6)">🃏 Flashcards</div>
+            <div class="yc-chip chip-exam" onclick="goto('exams',null)">📄 Examens</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRIVE -->
+    <div class="page" id="page-drive">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Documents</div>
+            <div class="ph-title">Drive par <em>Année</em></div>
+            <div class="ph-sub">Cours, résumés et fiches PDF — organisés par année d'études. Cliquez pour télécharger.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="drive-grid">
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#EFF6FF">📘</div>
+            <div><div class="dc-year" style="color:#2563EB">1ère Année</div><div class="dc-title">Sciences Fondamentales I</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Anatomie — Cours complet</span><span class="dc-item-size">PDF · 24MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Biologie Cellulaire</span><span class="dc-item-size">PDF · 18MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Chimie & Physique Médicale</span><span class="dc-item-size">PDF · 15MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 57MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#F5F3FF">📗</div>
+            <div><div class="dc-year" style="color:#7C3AED">2ème Année</div><div class="dc-title">Sciences Fondamentales II</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Biochimie — Métabolisme</span><span class="dc-item-size">PDF · 31MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Physiologie Générale</span><span class="dc-item-size">PDF · 22MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Microbiologie & Immunologie</span><span class="dc-item-size">PDF · 19MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 72MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#ECFDF5">📙</div>
+            <div><div class="dc-year" style="color:#059669">3ème Année</div><div class="dc-title">Pathologie & Sémiologie</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Anatomie Pathologique</span><span class="dc-item-size">PDF · 28MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Pharmacologie Générale</span><span class="dc-item-size">PDF · 20MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Sémiologie Médicale</span><span class="dc-item-size">PDF · 25MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 73MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#FFFBEB">📕</div>
+            <div><div class="dc-year" style="color:#D97706">4ème Année</div><div class="dc-title">Clinique I</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Médecine Interne</span><span class="dc-item-size">PDF · 35MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Chirurgie Générale</span><span class="dc-item-size">PDF · 30MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Pédiatrie</span><span class="dc-item-size">PDF · 24MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 89MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#FEF2F2">📔</div>
+            <div><div class="dc-year" style="color:#DC2626">5ème Année</div><div class="dc-title">Clinique II</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Spécialités Médicales</span><span class="dc-item-size">PDF · 40MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Gynécologie-Obstétrique</span><span class="dc-item-size">PDF · 27MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Médecine d'Urgence</span><span class="dc-item-size">PDF · 22MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 89MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+        <div class="drive-card">
+          <div class="dc-top">
+            <div class="dc-icon" style="background:#ECFEFF">📒</div>
+            <div><div class="dc-year" style="color:#0891B2">6ème Année</div><div class="dc-title">Externat & Résidanat</div></div>
+          </div>
+          <div class="dc-items">
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Préparation Résidanat</span><span class="dc-item-size">PDF · 50MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Fiches de Révision Globales</span><span class="dc-item-size">PDF · 38MB</span></div>
+            <div class="dc-item"><span class="dc-item-icon">📄</span><span class="dc-item-name">Cas Cliniques Résolus</span><span class="dc-item-size">PDF · 29MB</span></div>
+          </div>
+          <div class="dc-foot"><span class="dc-total">3 fichiers · 117MB</span><span class="dc-btn">Ouvrir Drive →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QCM -->
+    <div class="page" id="page-qcm">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Entraînement</div>
+            <div class="ph-title">QCM par <em>Année</em></div>
+            <div class="ph-sub">Choisissez votre année à gauche pour afficher les questions correspondantes.</div>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn-primary" onclick="nextQcm()">Question suivante →</button>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="qcm-layout">
+        <div class="qcm-sidebar">
+          <div class="qcm-year-btn active" onclick="filterQcm(this,1)" data-year="1"><div class="qyb-dot" style="background:#2563EB"></div><span class="qyb-label">1ère Année</span><span class="qyb-count">200</span></div>
+          <div class="qcm-year-btn" onclick="filterQcm(this,2)" data-year="2"><div class="qyb-dot" style="background:#7C3AED"></div><span class="qyb-label">2ème Année</span><span class="qyb-count">210</span></div>
+          <div class="qcm-year-btn" onclick="filterQcm(this,3)" data-year="3"><div class="qyb-dot" style="background:#059669"></div><span class="qyb-label">3ème Année</span><span class="qyb-count">195</span></div>
+          <div class="qcm-year-btn" onclick="filterQcm(this,4)" data-year="4"><div class="qyb-dot" style="background:#D97706"></div><span class="qyb-label">4ème Année</span><span class="qyb-count">220</span></div>
+          <div class="qcm-year-btn" onclick="filterQcm(this,5)" data-year="5"><div class="qyb-dot" style="background:#DC2626"></div><span class="qyb-label">5ème Année</span><span class="qyb-count">215</span></div>
+          <div class="qcm-year-btn" onclick="filterQcm(this,6)" data-year="6"><div class="qyb-dot" style="background:#0891B2"></div><span class="qyb-label">6ème Année</span><span class="qyb-count">160</span></div>
+        </div>
+        <div id="qcmMain" class="qcm-main"></div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <div class="page" id="page-flashcards">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Mémorisation</div>
+            <div class="ph-title">Flash<em>cards</em></div>
+            <div class="ph-sub">Cliquez sur une carte pour révéler la réponse. Filtrez par année ou matière.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="fc-bar">
+        <div class="fc-f on" onclick="filterFc(this,'all')">Toutes</div>
+        <div class="fc-f" onclick="filterFc(this,'1A')">1ère Année</div>
+        <div class="fc-f" onclick="filterFc(this,'2A')">2ème Année</div>
+        <div class="fc-f" onclick="filterFc(this,'3A')">3ème Année</div>
+        <div class="fc-f" onclick="filterFc(this,'4A')">4ème Année</div>
+        <div class="fc-f" onclick="filterFc(this,'5A')">5ème Année</div>
+        <div class="fc-f" onclick="filterFc(this,'6A')">6ème Année</div>
+      </div>
+      <div class="fc-grid" id="fcGrid"></div>
+    </div>
+
+    <!-- EXAMS -->
+    <div class="page" id="page-exams">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Archives</div>
+            <div class="ph-title">Examens <em>Passés</em></div>
+            <div class="ph-sub">Entraînez-vous avec les vrais examens des années précédentes. Corrections incluses.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="exams-grid">
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">1ère Année · 2023</div><div class="ec-title">Anatomie Générale</div><div class="ec-sub">Session Juin 2023 — 60 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">60 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">1ère Année · 2022</div><div class="ec-title">Biologie Cellulaire</div><div class="ec-sub">Session Juin 2022 — 45 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">45 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">2ème Année · 2023</div><div class="ec-title">Physiologie</div><div class="ec-sub">Session Janvier 2023 — 70 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">70 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">2ème Année · 2022</div><div class="ec-title">Biochimie</div><div class="ec-sub">Session Juin 2022 — 55 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">55 QCM</span><span class="ec-chip" style="background:var(--amber-bg);color:#B45309;border-color:rgba(245,158,11,.15)">Sans corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">3ème Année · 2023</div><div class="ec-title">Pharmacologie</div><div class="ec-sub">Session Juin 2023 — 80 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">80 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">4ème Année · 2023</div><div class="ec-title">Médecine Interne</div><div class="ec-sub">Session Janvier 2023 — 100 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">100 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">5ème Année · 2023</div><div class="ec-title">Spécialités Médicales</div><div class="ec-sub">Session Juin 2023 — 90 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">90 QCM</span><span class="ec-chip" style="background:var(--amber-bg);color:#B45309;border-color:rgba(245,158,11,.15)">Sans corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+        <div class="exam-card"><div class="ec-top"><div class="ec-year">6ème Année · 2023</div><div class="ec-title">Préparation Résidanat</div><div class="ec-sub">Annales Résidanat 2022 — 200 QCM</div></div><div class="ec-body"><div class="ec-chips"><span class="ec-chip">200 QCM</span><span class="ec-chip" style="background:var(--accent-bg);color:#15803D;border-color:rgba(34,197,94,.15)">Corrigé</span></div><div class="ec-dl">📥 Télécharger</div></div></div>
+      </div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="page" id="page-feedback">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Communauté</div>
+            <div class="ph-title">Laissez votre <em>Avis</em></div>
+            <div class="ph-sub">Votre retour nous aide à améliorer MediX pour tous les étudiants en médecine.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="feedback-layout">
+        <div class="fb-form-card">
+          <div class="fb-title">Votre message</div>
+          <div class="fb-sub">Remplissez le formulaire ci-dessous. Tous les avis sont lus attentivement.</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Prénom & Nom <span>*</span></label>
+              <input type="text" class="form-input" placeholder="Ex: Ahmed Khadar" id="fbName">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Année d'études <span>*</span></label>
+              <select class="form-select" id="fbYear">
+                <option value="">— Choisissez votre année —</option>
+                <option value="1A">1ère Année</option>
+                <option value="2A">2ème Année</option>
+                <option value="3A">3ème Année</option>
+                <option value="4A">4ème Année</option>
+                <option value="5A">5ème Année</option>
+                <option value="6A">6ème Année</option>
+                <option value="med">Médecin (diplômé)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Type de retour <span>*</span></label>
+            <div class="form-type-grid">
+              <div class="type-btn" onclick="selectType(this,'suggestion')"><span class="t-icon">💡</span>Suggestion</div>
+              <div class="type-btn" onclick="selectType(this,'bug')"><span class="t-icon">🐛</span>Problème</div>
+              <div class="type-btn" onclick="selectType(this,'content')"><span class="t-icon">📚</span>Contenu</div>
+              <div class="type-btn" onclick="selectType(this,'compliment')"><span class="t-icon">⭐</span>Compliment</div>
+              <div class="type-btn" onclick="selectType(this,'demand')"><span class="t-icon">📥</span>Demande</div>
+              <div class="type-btn" onclick="selectType(this,'other')"><span class="t-icon">💬</span>Autre</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Votre message <span>*</span></label>
+            <textarea class="form-textarea" placeholder="Décrivez votre retour en détail..." id="fbMessage"></textarea>
+          </div>
+
+          <input type="hidden" id="fbType" value="">
+          <button class="btn-submit" onclick="submitFeedback()">Envoyer mon avis →</button>
+
+          <div class="success-msg" id="successMsg">
+            <div class="sm-icon">✅</div>
+            <div class="sm-title">Message envoyé avec succès !</div>
+            <div class="sm-sub">Merci pour votre retour. Nous le lirons attentivement et améliorerons MediX en conséquence.</div>
+          </div>
+        </div>
+
+        <div class="fb-right">
+          <div class="fb-info-card">
+            <div class="fbi-title">ℹ️ Comment ça fonctionne ?</div>
+            <div class="fbi-item"><div class="fbi-icon">📝</div><div class="fbi-text"><strong>Remplissez</strong> le formulaire avec votre nom, votre année et votre message.</div></div>
+            <div class="fbi-item"><div class="fbi-icon">📬</div><div class="fbi-text"><strong>Envoyez</strong> votre avis directement. Il sera reçu par l'équipe MediX.</div></div>
+            <div class="fbi-item"><div class="fbi-icon">🔄</div><div class="fbi-text"><strong>Amélioration</strong> continue grâce à vos retours. Chaque suggestion compte.</div></div>
+          </div>
+          <div class="fb-info-card">
+            <div class="fbi-title">📊 Avis récents</div>
+            <div class="fbi-item"><div class="fbi-icon">⭐</div><div class="fbi-text"><strong>Amina B. · 3A</strong><br>« Les flashcards sont vraiment utiles pour les révisions. »</div></div>
+            <div class="fbi-item"><div class="fbi-icon">⭐</div><div class="fbi-text"><strong>Youcef K. · 5A</strong><br>« Plateforme très bien organisée. Continuez comme ça ! »</div></div>
+            <div class="fbi-item"><div class="fbi-icon">💡</div><div class="fbi-text"><strong>Sara M. · 2A</strong><br>« Il manque des cours de biochimie pour la 2A. »</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
