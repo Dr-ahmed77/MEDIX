@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <!-- SECTION — Drive / QCM / Flashcards / Exams (unified) -->
+    <!-- SECTION -->
     <div class="page" id="page-section">
       <div class="ph">
         <div class="ph-top">
@@ -243,18 +243,19 @@
   </main>
 </div>
 
-<!-- Firebase compat (no imports needed) -->
 <!-- XP Toast -->
 <div class="xp-toast" id="xpToast"><div class="xp-toast-icon">⭐</div><div><div class="xp-toast-text" id="xpToastText">Bonne réponse !</div><div class="xp-toast-pts" id="xpToastPts">+10 XP</div></div></div>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<!-- XP Toast -->
-<div class="xp-toast" id="xpToast"><div class="xp-toast-icon">⭐</div><div><div class="xp-toast-text" id="xpToastText">Bonne réponse !</div><div class="xp-toast-pts" id="xpToastPts">+10 XP</div></div></div>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
 
+// ═══════════════════════════════════════════════════════════════
+// MEDIX APP - JavaScript Principal
+// ═══════════════════════════════════════════════════════════════
 
+// ── FIREBASE ──
 const firebaseConfig = {
   apiKey: "AIzaSyA1zwmnlXIeHQDfkzhNbT0vdhus5kWLB-w",
   authDomain: "medix-517ae.firebaseapp.com",
@@ -266,11 +267,7 @@ const firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-
-
-const db = firebase.firestore();
+const db = firebase.firestore();  // ← مرة واحدة فقط!
 
 // ── DATE ──
 const d = new Date();
@@ -837,7 +834,6 @@ document.addEventListener('click', function(e) {
   }
 });
 
-
 // ── EXPOSE TO WINDOW (required for onclick handlers with ES modules) ──
 window.goto = goto;
 window.showYearPicker = showYearPicker;
@@ -853,7 +849,6 @@ window.renderQcmQ = renderQcmQ;
 window.toggleSidebar = toggleSidebar;
 window.closeSidebar = closeSidebar;
 window.toggleDark = toggleDark;
-
 
 </script>
 </body>
