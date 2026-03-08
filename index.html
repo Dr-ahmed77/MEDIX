@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediX — Plateforme Médicale</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-logo">⚕</div>
+    <div>
+      <div class="tb-brand">Medi<span>X</span></div>
+      <div class="tb-tagline">Plateforme des Étudiants en Médecine</div>
+    </div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-pill tp-green">🔥 7 Jours de Suite</div>
+    <div class="tb-pill tp-blue" id="tbDate"></div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <div class="sh-label">Menu Principal</div>
+      <div class="sh-title">Bibliothèque Médicale</div>
+    </div>
+    <nav class="nav-scroll">
+      <div class="nav-group">
+        <div class="ng-label">Accueil</div>
+        <div class="nav-item active" onclick="goto('home',this)">
+          <span class="nav-icon ni-home"></span><span class="nav-label">Tableau de bord</span>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="ng-label">Outils</div>
+        <div class="nav-item" id="nav-drive" onclick="goto('section',this,'drive')">
+          <span class="nav-icon ni-drive"></span><span class="nav-label">Drive</span>
+        </div>
+        <div class="nav-item" id="nav-qcm" onclick="goto('section',this,'qcm')">
+          <span class="nav-icon ni-qcm"></span><span class="nav-label">QCM</span>
+        </div>
+        <div class="nav-item" id="nav-flashcards" onclick="goto('section',this,'flashcards')">
+          <span class="nav-icon ni-flash"></span><span class="nav-label">Flashcards</span>
+        </div>
+        <div class="nav-item" id="nav-exams" onclick="goto('section',this,'exams')">
+          <span class="nav-icon ni-exam"></span><span class="nav-label">Examens Passés</span>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="ng-label">Communauté</div>
+        <div class="nav-item" onclick="goto('feedback',this)">
+          <span class="nav-icon ni-fb"></span><span class="nav-label">Laisser un avis</span>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="streak-card">
+        <div class="sc-icon">🔥</div>
+        <div>
+          <div class="sc-val">7</div>
+          <div class="sc-label">Jours consécutifs</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- HOME -->
+    <div class="page active" id="page-home">
+      <div class="home-top">
+        <div class="home-hero">
+          <div class="home-hero-text">
+            <div class="hh-tag">⚕ Plateforme MediX · Médecine Algérienne</div>
+            <div class="hh-title">Bienvenue sur<br><em>votre espace médical</em></div>
+            <div class="hh-sub">Tous vos cours, QCM, flashcards et examens passés réunis en un seul endroit. Organisé par année, accessible partout.</div>
+            <div class="hh-stats">
+              <div class="hh-stat"><div class="hs-num">6</div><div class="hs-lbl">Années</div></div>
+              <div class="hh-stat"><div class="hs-num">1200+</div><div class="hs-lbl">QCM</div></div>
+              <div class="hh-stat"><div class="hs-num">500+</div><div class="hs-lbl">Flashcards</div></div>
+              <div class="hh-stat"><div class="hs-num">80+</div><div class="hs-lbl">Examens</div></div>
+            </div>
+          </div>
+          <div class="hero-img-slot" id="heroSlot" onclick="heroChangeImg()">
+            <div class="his-placeholder" id="heroPlaceholder">
+              <div class="his-plus">+</div>
+              <div class="his-label">Ajouter une photo</div>
+            </div>
+            <div class="his-overlay"><button class="his-btn">Changer</button></div>
+            <div class="his-date" id="heroDate"></div>
+          </div>
+          <input type="file" id="heroImgInput" accept="image/*" style="display:none" onchange="handleHeroImg(event)">
+        </div>
+      </div>
+      <div class="home-grid">
+        <div class="home-card" onclick="goto('section',null,'drive')">
+          <div class="hc-icon" style="background:#FFF7ED">📁</div>
+          <div class="hc-title">Drive par Année</div>
+          <div class="hc-desc">Cours, résumés et documents PDF organisés par année et matière.</div>
+          <div class="hc-foot"><span class="hc-count">6 dossiers</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('section',null,'qcm')">
+          <div class="hc-icon" style="background:var(--primary-bg)">📝</div>
+          <div class="hc-title">QCM Interactifs</div>
+          <div class="hc-desc">Plus de 1200 questions classées par année, module et leçon.</div>
+          <div class="hc-foot"><span class="hc-count">1200+ questions</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('section',null,'flashcards')">
+          <div class="hc-icon" style="background:var(--violet-bg)">🃏</div>
+          <div class="hc-title">Flashcards</div>
+          <div class="hc-desc">Mémorisez les notions clés avec des cartes de révision par leçon.</div>
+          <div class="hc-foot"><span class="hc-count">500+ cartes</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('section',null,'exams')">
+          <div class="hc-icon" style="background:var(--red-bg)">📄</div>
+          <div class="hc-title">Examens Passés</div>
+          <div class="hc-desc">Archives des examens avec corrections, classés par année et module.</div>
+          <div class="hc-foot"><span class="hc-count">80+ examens</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('section',null,'flashcards')">
+          <div class="hc-icon" style="background:var(--accent-bg)">🚀</div>
+          <div class="hc-title">Commencer à réviser</div>
+          <div class="hc-desc">Choisissez votre année → module → leçon et commencez maintenant.</div>
+          <div class="hc-foot"><span class="hc-count">Toutes années</span><span class="hc-arrow">→</span></div>
+        </div>
+        <div class="home-card" onclick="goto('feedback',null)">
+          <div class="hc-icon" style="background:#F0F9FF">💬</div>
+          <div class="hc-title">Laisser un Avis</div>
+          <div class="hc-desc">Votre retour nous aide à améliorer la plateforme pour tous.</div>
+          <div class="hc-foot"><span class="hc-count">Votre voix compte</span><span class="hc-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION — Drive / QCM / Flashcards / Exams (unified) -->
+    <div class="page" id="page-section">
+      <div class="ph">
+        <div class="ph-top">
+          <div style="flex:1">
+            <div class="ph-eyebrow" id="ph-eyebrow"></div>
+            <div class="ph-title">
+              <span id="ph-title-main"></span><em id="ph-title-em"></em>
+            </div>
+          </div>
+        </div>
+        <div class="breadcrumb" id="breadcrumb"></div>
+        <div class="ph-divider"></div>
+      </div>
+      <div id="section-content"></div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="page" id="page-feedback">
+      <div class="ph">
+        <div class="ph-top">
+          <div>
+            <div class="ph-eyebrow">Communauté</div>
+            <div class="ph-title">Laissez votre <em>Avis</em></div>
+            <div class="ph-sub">Votre retour nous aide à améliorer MediX pour tous les étudiants.</div>
+          </div>
+        </div>
+        <div class="ph-divider"></div>
+      </div>
+      <div class="feedback-layout">
+        <div class="fb-form-card">
+          <div class="fb-title">Votre message</div>
+          <div class="fb-sub">Remplissez le formulaire. Tous les avis sont lus attentivement.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Prénom & Nom <span>*</span></label>
+              <input type="text" class="form-input" placeholder="Ex: Ahmed Khadar" id="fbName">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Année d'études <span>*</span></label>
+              <select class="form-select" id="fbYear">
+                <option value="">— Choisissez votre année —</option>
+                <option value="1A">1ère Année</option>
+                <option value="2A">2ème Année</option>
+                <option value="3A">3ème Année</option>
+                <option value="4A">4ème Année</option>
+                <option value="5A">5ème Année</option>
+                <option value="6A">6ème Année</option>
+                <option value="med">Médecin (diplômé)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type de retour <span>*</span></label>
+            <div class="form-type-grid">
+              <div class="type-btn" onclick="selectType(this,'suggestion')"><span class="t-icon">💡</span>Suggestion</div>
+              <div class="type-btn" onclick="selectType(this,'bug')"><span class="t-icon">🐛</span>Problème</div>
+              <div class="type-btn" onclick="selectType(this,'content')"><span class="t-icon">📚</span>Contenu</div>
+              <div class="type-btn" onclick="selectType(this,'compliment')"><span class="t-icon">⭐</span>Compliment</div>
+              <div class="type-btn" onclick="selectType(this,'demand')"><span class="t-icon">📥</span>Demande</div>
+              <div class="type-btn" onclick="selectType(this,'other')"><span class="t-icon">💬</span>Autre</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Votre message <span>*</span></label>
+            <textarea class="form-textarea" placeholder="Décrivez votre retour en détail..." id="fbMessage"></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitFeedback()">Envoyer mon avis →</button>
+          <div class="success-msg" id="successMsg">
+            <div class="sm-icon">✅</div>
+            <div class="sm-title">Message envoyé avec succès !</div>
+            <div class="sm-sub">Merci pour votre retour. Nous le lirons attentivement.</div>
+          </div>
+        </div>
+        <div class="fb-right">
+          <div class="fb-info-card">
+            <div class="fbi-title">ℹ️ Comment ça fonctionne ?</div>
+            <div class="fbi-item"><div class="fbi-icon">📝</div><div class="fbi-text"><strong>Remplissez</strong> le formulaire avec votre nom, votre année et votre message.</div></div>
+            <div class="fbi-item"><div class="fbi-icon">📬</div><div class="fbi-text"><strong>Envoyez</strong> votre avis directement à l'équipe MediX.</div></div>
+            <div class="fbi-item"><div class="fbi-icon">🔄</div><div class="fbi-text"><strong>Amélioration</strong> continue grâce à vos retours. Chaque suggestion compte.</div></div>
+          </div>
+          <div class="fb-info-card">
+            <div class="fbi-title">📊 Avis récents</div>
+            <div class="fbi-item"><div class="fbi-icon">⭐</div><div class="fbi-text"><strong>Amina B. · 3A</strong><br>« Les flashcards sont vraiment utiles pour les révisions. »</div></div>
+            <div class="fbi-item"><div class="fbi-icon">⭐</div><div class="fbi-text"><strong>Youcef K. · 5A</strong><br>« Plateforme très bien organisée. Continuez comme ça ! »</div></div>
+            <div class="fbi-item"><div class="fbi-icon">💡</div><div class="fbi-text"><strong>Sara M. · 2A</strong><br>« Il manque des cours de biochimie pour la 2A. »</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
